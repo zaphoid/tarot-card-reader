@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Example Page</title>
+    <!-- Direct static path to JavaScript file -->
+    <script src="/static/js/script.js"></script>
+</head>
+<body>
+    <h1>Welcome to the Tarot Card Reader</h1>
+    <input type="text" id="card" placeholder="Enter tarot card name">
+    <button onclick="getReading()">Get Reading</button>
+    <div id="result"></div>
+    <script>
+    function getReading() {
+        var cardName = document.getElementById('card').value;
+        fetch('/tarot', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({card: cardName})
+        })
+        .then(response => response.json())
+        .then(data => {
+            document.getElementById('result').innerHTML = `<strong>Reading for ${data.card}:</strong> ${data.reading}`;
+        })
+        .catch(error => console.error('Error:', error));
+    }
+    </script>
+</body>
+</html>

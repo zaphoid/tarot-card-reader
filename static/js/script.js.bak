@@ -1,0 +1,15 @@
+function getReading() {
+    var cardName = document.getElementById('card').value;
+    fetch('/tarot', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({card: cardName})
+    })
+    .then(response => response.json())
+    .then(data => {
+        document.getElementById('result').innerHTML = `<strong>Reading for ${data.card}:</strong> ${data.reading}`;
+    })
+    .catch(error => console.error('Error:', error));
+}
