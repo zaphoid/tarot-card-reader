@@ -4,16 +4,66 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tarot Card Reader</title>
-    <!-- Correctly reference the static JS file using Flask's url_for -->
     <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        h1, h2 {
+            color: #444;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        label {
+            display: block;
+            margin-top: 10px;
+        }
+        input, select, button {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            margin-bottom: 15px;
+        }
+        .result-section {
+            margin-top: 20px;
+        }
+        .card-display {
+            font-size: 18px;
+            margin-top: 10px;
+        }
+    </style>
 </head>
 <body>
-    <h1>Tarot Card Reader</h1>
-    <p>Enter the name of a tarot card and get a reading:</p>
-    <input type="text" id="card" placeholder="Enter tarot card name">
-    <button onclick="getReading()">Get Reading</button>
+    <div class="container">
+        <h1>Tarot Card Reader</h1>
 
-    <h2>Tarot Reading:</h2>
-    <div id="result">Your tarot reading will appear here...</div>
+        <!-- User Input for Tarot Insight Question -->
+        <label for="insight">What would you like to gain insight on? (Optional)</label>
+        <input type="text" id="insight" placeholder="e.g., Love, Career, Health...">
+
+        <!-- Dropdown to Select Tarot Spread -->
+        <label for="spread">Choose a Tarot Spread:</label>
+        <select id="spread">
+            <option value="1">Single Card Reading</option>
+            <option value="3">Three Card Spread (Past, Present, Future)</option>
+            <option value="10">Celtic Cross Spread (10 cards)</option>
+        </select>
+
+        <!-- Button to Shuffle and Draw Cards -->
+        <button onclick="shuffleAndDraw()">Shuffle & Draw Cards</button>
+
+        <!-- Display Drawn Cards -->
+        <h2>Drawn Cards:</h2>
+        <div id="cards" class="card-display">Your drawn cards will appear here...</div>
+
+        <!-- Display Tarot Reading Results -->
+        <div class="result-section">
+            <h2>Tarot Reading:</h2>
+            <div id="result">Your tarot reading will appear here...</div>
+        </div>
+    </div>
 </body>
 </html>

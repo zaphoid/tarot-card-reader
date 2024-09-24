@@ -4,13 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tarot Card Reader</title>
-    <script src="/static/js/script.js"></script>
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
 </head>
 <body>
     <h1>Tarot Card Reader</h1>
-    <p>Enter the name of a tarot card and get a reading:</p>
-    <input type="text" id="card" placeholder="Enter tarot card name">
-    <button onclick="getReading()">Get Reading</button>
+    
+    <button onclick="shuffleDeck()">Shuffle and Draw 4 Cards</button>
+    
+    <h2>Drawn Cards:</h2>
+    <div id="cards">Your drawn cards will appear here...</div>
 
     <h2>Tarot Reading:</h2>
     <div id="result">Your tarot reading will appear here...</div>
