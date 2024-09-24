@@ -1,7 +1,7 @@
 function getReading() {
     var cardName = document.getElementById('card').value;
-    
-    // Fetch request to Flask backend
+
+    // Fetch request to the Flask backend
     fetch('/tarot', {
         method: 'POST',
         headers: {

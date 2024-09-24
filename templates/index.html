@@ -4,7 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tarot Card Reader</title>
-    <script src="/static/js/script.js"></script>
+    <!-- Correctly reference the static JS file using Flask's url_for -->
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
 </head>
 <body>
     <h1>Tarot Card Reader</h1>
